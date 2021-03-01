@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyWorkoutTracker</string>
+    <string name="name_your_workout">Name your Workout</string>
+    <string name="add_exercise">ADD EXERCISE</string>
+    <string name="cancel_workout_button">CANCEL WORKOUT</string>
+    <string name="finish_button">FINISH</string>
+    <string name="current_workout">Current Workout</string>
+    <string name="test">TEST</string>
+    <string name="add">ADD</string>
+    <string name="workout_tracker_fragment">workoutTrackerFragment</string>'
+    <string name="workout_exercise_fragment">workoutExerciseFragment</string>
+
+</resources>

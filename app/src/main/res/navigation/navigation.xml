@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/workout_tracker_fragment">
+
+    <fragment
+        android:id="@+id/workout_tracker_fragment"
+        android:name="com.anthonyra95.android.myworkouttracker.workoutracker.WorkoutTrackerFragment"
+        android:label="@string/workout_tracker_fragment"
+        tools:layout="@layout/fragment_workout_tracker">
+        <action
+            android:id="@+id/action_workout_tracker_fragment_to_workout_exercises_fragment"
+            app:destination="@id/workout_exercises_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/workout_exercises_fragment"
+        android:name="com.anthonyra95.android.myworkouttracker.workoutexercises.WorkoutExercisesFragment"
+        android:label="@string/workout_exercise_fragment"
+        tools:layout="@layout/fragment_workout_exercises">
+        <argument
+            android:name="sleepNightKey"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_workout_exercises_fragment_to_workout_tracker_fragment"
+            app:destination="@id/workout_tracker_fragment" />
+    </fragment>
+
+</navigation>
