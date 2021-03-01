@@ -22,5 +22,8 @@ data class Workout(
     var reps: Int = -1,
 
     @ColumnInfo(name = "weigth")
-    var weigth: Int = -1
+    var weigth: Int = -1,
+
+    @ColumnInfo(name = "workout_id")
+    var workoutId: Int = -1,
 )
