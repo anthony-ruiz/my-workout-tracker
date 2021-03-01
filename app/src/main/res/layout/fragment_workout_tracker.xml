@@ -4,7 +4,9 @@
 
 
     <data>
-
+        <variable
+            name="workoutTrackerViewModel"
+            type="com.anthonyra95.android.myworkouttracker.workoutracker.WorkoutTrackerViewModel" />
     </data>
 
 
