@@ -10,4 +10,9 @@
     <string name="workout_tracker_fragment">workoutTrackerFragment</string>'
     <string name="workout_exercise_fragment">workoutExerciseFragment</string>
 
+
+    <string name="title"><![CDATA[<h3>WORKOUT DATA: </h3>]]></string>
+    <string name="start_time"><![CDATA[<b>Start:</b>]]></string>
+    <string name="end_time"><![CDATA[<b>End:</b>]]></string>
+    <string name="time_spent"><![CDATA[<b>Hours:Minutes:Seconds</b>]]></string>
 </resources>

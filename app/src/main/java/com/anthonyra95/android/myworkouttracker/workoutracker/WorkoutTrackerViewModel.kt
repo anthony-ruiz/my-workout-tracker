@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.anthonyra95.android.myworkouttracker.database.Workout
 import com.anthonyra95.android.myworkouttracker.database.WorkoutDatabaseDao
+import com.anthonyra95.android.myworkouttracker.database.formatWorkouts
 import kotlinx.coroutines.*
 
 
@@ -30,7 +31,12 @@ class WorkoutTrackerViewModel(
     private lateinit var todaysWorkout : LiveData<List<Workout>>
 
     //all of the working sets on our database
-    private val workout = database.getAllEnries()
+    private val allworkouts = database.getAllEnries()
+
+    val workoutString = Transformations.map(allworkouts){workouts->
+        formatWorkouts(workouts,application.resources)
+    }
+
 
     init {
         initializeTodaysWorkout()
