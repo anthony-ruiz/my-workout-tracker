@@ -8,6 +8,9 @@
      the whole ViewModel, so that we can access the LiveData,
      click handlers, and state variables. -->
     <data>
+        <variable
+            name="workoutExercisesViewModel"
+            type="com.anthonyra95.android.myworkouttracker.workoutexercises.WorkoutExercisesViewModel" />
 
     </data>
 
@@ -30,19 +33,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <ScrollView
+            android:id="@+id/exercise_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin"
-            android:layout_marginEnd="@dimen/margin"
-            android:layout_marginBottom="@dimen/margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_exercise_text" />
+            app:layout_constraintTop_toBottomOf="@+id/add_exercise_text">
+
+            <!-- In the TextView, we can access the nightsString LiveData,
+                 which keeps it displayed and updated in the TextView
+                 whenever it changes. -->
+
+            <TextView
+                android:id="@+id/exercises_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                android:text="EXERCISES " />
+        </ScrollView>
 
         <Button
             android:id="@+id/confirm_exercise_button"
@@ -50,11 +63,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin"
             android:text="@string/add"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintBottom_toTopOf="@+id/exercise_scroll_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/add_exercise_text"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> workoutExercisesViewModel.onSetExerciseid(2L) }"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

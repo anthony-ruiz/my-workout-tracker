@@ -10,7 +10,7 @@ data class Workout(
     var entryId: Long = 0L,
 
     @ColumnInfo(name = "exercise_id") //TODO make it a foreign key
-    var exerciseId: Int = -1,
+    var exerciseId: Long = 0L,
 
     @ColumnInfo(name = "start_time_milli")
     var startTimeMilli: Long = System.currentTimeMillis(),

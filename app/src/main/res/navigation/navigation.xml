@@ -22,7 +22,7 @@
         android:label="@string/workout_exercise_fragment"
         tools:layout="@layout/fragment_workout_exercises">
         <argument
-            android:name="sleepNightKey"
+            android:name="exerciseKey"
             app:argType="long" />
         <action
             android:id="@+id/action_workout_exercises_fragment_to_workout_tracker_fragment"

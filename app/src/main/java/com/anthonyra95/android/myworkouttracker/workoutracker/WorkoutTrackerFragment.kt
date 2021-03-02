@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.anthonyra95.android.myworkouttracker.R
 import com.anthonyra95.android.myworkouttracker.database.WorkoutDatabase
 import com.anthonyra95.android.myworkouttracker.databinding.FragmentWorkoutTrackerBinding
@@ -27,6 +29,28 @@ class WorkoutTrackerFragment : Fragment() {
 
         binding.workoutTrackerViewModel = workoutTrackerViewModel
         binding.setLifecycleOwner(this)
+
+
+           workoutTrackerViewModel.navigateToExercise.observe(viewLifecycleOwner, Observer {
+               workout->
+               workout?.let {
+                   this.findNavController().navigate(
+                       WorkoutTrackerFragmentDirections
+                           .actionWorkoutTrackerFragmentToWorkoutExercisesFragment(workout.entryId))
+               }
+           })
+
+//            set ->
+//            set?.let {
+//                this.findNavController().navigate(
+//
+//                )
+//
+//                }
+//
+//                )
+//            }
+//        })
         return binding.root
     }
 }

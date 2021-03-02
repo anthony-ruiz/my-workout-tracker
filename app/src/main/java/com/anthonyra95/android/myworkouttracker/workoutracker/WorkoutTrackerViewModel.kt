@@ -61,6 +61,16 @@ class WorkoutTrackerViewModel(
         }
     }
 
+    //use live data trigger navigation
+    private val _navigateToExercise = MutableLiveData<Workout>()
+
+    val navigateToExercise: LiveData<Workout>
+        get() = _navigateToExercise
+
+    fun doneNavigating(){
+        _navigateToExercise.value = null
+    }
+
     fun onStartWorkout(){
         uiScope.launch {
             Log.i("thisisit", "clicked registered")
@@ -73,6 +83,8 @@ class WorkoutTrackerViewModel(
             insert(newWorkout)
 
             todaysWorkout = getTodaysWorkoutFromDatabase()
+
+            _navigateToExercise.value = newWorkout
         }
     }
     private suspend fun insert(workout: Workout){
