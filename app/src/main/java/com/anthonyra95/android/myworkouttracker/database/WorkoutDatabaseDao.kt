@@ -13,19 +13,22 @@ interface WorkoutDatabaseDao {
     fun insertWorkout(workout: Workout)
 
     @Update
-    fun update(workout: Workout)
+    fun updateEntry(workout: Workout)
 
-    @Query("SELECT * FROM workout_table WHERE workout_id = :key")
-    fun getThisWorkout(key: Long) : LiveData<List<Workout>>
+    @Query("SELECT * FROM working_sets_table WHERE entryId = :workingSetId")
+    fun getWorkingSet(workingSetId: Long) : Workout
 
-    @Query("SELECT * from workout_table WHERE entryId = :key")
-    fun getSingleExerciseonDay(key: Long): Workout?
-
-    @Query("DELETE FROM workout_table")
+    @Query("DELETE FROM working_sets_table")
     fun clear()
 
-    @Query("SELECT * FROM workout_table ORDER BY entryId DESC")
+    @Query("SELECT * FROM working_sets_table ORDER BY entryId DESC")
     fun getAllEnries(): LiveData<List<Workout>>
+
+    @Query("SELECT * FROM working_sets_table ORDER BY entryId DESC LIMIT 1")
+    fun getLatestEntry(): Workout
+
+    @Query("SELECT * FROM working_sets_table WHERE  start_time_milli = (SELECT MAX(start_time_milli) FROM working_sets_table)")
+    fun getCurrentWorkout() : LiveData<List<Workout>>
 
 
 }
