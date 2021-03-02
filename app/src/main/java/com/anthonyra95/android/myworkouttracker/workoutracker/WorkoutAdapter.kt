@@ -4,30 +4,24 @@ import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.anthonyra95.android.myworkouttracker.R
 import com.anthonyra95.android.myworkouttracker.database.Workout
 
-class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
-    var data = listOf<Workout>()
-
-        //tell recycler view that he data set changed
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-    //recylcer view needs to know how many items there are
-    override fun getItemCount() = data.size
+class WorkoutAdapter : ListAdapter<Workout, WorkoutAdapter.ViewHolder>(WorkoutDiffCallback()) {
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(parent )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
 
@@ -51,6 +45,15 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
         }
     }
 
+    class WorkoutDiffCallback : DiffUtil.ItemCallback<Workout>(){
+        override fun areItemsTheSame(oldItem: Workout, newItem: Workout): Boolean {
+            return oldItem.entryId == newItem.entryId
+        }
 
+        override fun areContentsTheSame(oldItem: Workout, newItem: Workout): Boolean {
+            return oldItem == newItem
+        }
+
+    }
 
 }
