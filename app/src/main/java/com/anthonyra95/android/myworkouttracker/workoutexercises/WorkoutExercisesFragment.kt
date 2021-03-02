@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.anthonyra95.android.myworkouttracker.R
 import com.anthonyra95.android.myworkouttracker.database.WorkoutDatabase
 import com.anthonyra95.android.myworkouttracker.databinding.FragmentWorkoutExercisesBinding
+import com.anthonyra95.android.myworkouttracker.workoutracker.WorkoutAdapter
 
 
 class WorkoutExercisesFragment : Fragment() {
@@ -32,6 +33,7 @@ class WorkoutExercisesFragment : Fragment() {
 
         val workoutExercisesViewModel = ViewModelProvider(this,viewModelFactory).get(WorkoutExercisesViewModel::class.java)
         binding.workoutExercisesViewModel = workoutExercisesViewModel
+
 
         workoutExercisesViewModel.navigateToWorkoutTracker.observe(viewLifecycleOwner, Observer {
             if(it==true){

@@ -28,7 +28,7 @@ class WorkoutTrackerViewModel(
     private  var thisWorkingSet = MutableLiveData<Workout?>()
 
     //all of the working sets on our database
-    private val allworkouts = database.getAllEnries()
+    val allworkouts = database.getAllEnries()
 
     val workoutString = Transformations.map(allworkouts){workouts->
         formatWorkouts(workouts,application.resources)

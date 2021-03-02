@@ -21,7 +21,9 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.TextView
 import androidx.core.text.HtmlCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.anthonyra95.android.myworkouttracker.R
 import com.anthonyra95.android.myworkouttracker.database.Workout
 import java.text.SimpleDateFormat
@@ -107,3 +109,6 @@ fun formatWorkouts(nights: List<Workout>, resources: Resources): Spanned {
         return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
+
+// this is a simple view holder for the RecyclerView
+class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)

@@ -28,6 +28,17 @@ class WorkoutTrackerFragment : Fragment() {
         val workoutTrackerViewModel = ViewModelProvider(this,viewModelFactory).get(WorkoutTrackerViewModel::class.java)
 
         binding.workoutTrackerViewModel = workoutTrackerViewModel
+
+        val adapter = WorkoutAdapter()
+        binding.setsList.adapter = adapter
+
+        workoutTrackerViewModel.allworkouts.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
+
+
         binding.setLifecycleOwner(this)
 
 
@@ -40,17 +51,6 @@ class WorkoutTrackerFragment : Fragment() {
                }
            })
 
-//            set ->
-//            set?.let {
-//                this.findNavController().navigate(
-//
-//                )
-//
-//                }
-//
-//                )
-//            }
-//        })
         return binding.root
     }
 }
