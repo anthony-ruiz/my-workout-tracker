@@ -77,9 +77,11 @@ class WorkoutTrackerViewModel(
 
             //if our previous current set has same start and end time set start end time to same as previous one
             //so that we can distinguish from our workout by starting time
-            if(thisWorkingSet.value?.endTimeMilli == thisWorkingSet.value?.startTimeMilli){
-                newWorkout.endTimeMilli= thisWorkingSet.value?.endTimeMilli!!
-                newWorkout.startTimeMilli= thisWorkingSet.value?.endTimeMilli!!
+            if (thisWorkingSet.value != null) {
+                if (thisWorkingSet.value?.endTimeMilli == thisWorkingSet.value?.startTimeMilli) {
+                    newWorkout.endTimeMilli = thisWorkingSet.value?.endTimeMilli!!
+                    newWorkout.startTimeMilli = thisWorkingSet.value?.endTimeMilli!!
+                }
             }
             // save our new database
             insert(newWorkout)
@@ -124,7 +126,10 @@ class WorkoutTrackerViewModel(
 
     suspend fun clear(){
         viewModelScope.launch {
-            clear()
+            withContext(Dispatchers.IO) {
+                database.clear()
+            }
+
         }
 
     }
