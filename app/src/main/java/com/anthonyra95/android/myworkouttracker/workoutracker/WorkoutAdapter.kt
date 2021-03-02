@@ -1,12 +1,12 @@
 package com.anthonyra95.android.myworkouttracker.workoutracker
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.anthonyra95.android.myworkouttracker.R
-import com.anthonyra95.android.myworkouttracker.database.TextItemViewHolder
 import com.anthonyra95.android.myworkouttracker.database.Workout
 
 class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
@@ -20,12 +20,7 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
     //recylcer view needs to know how many items there are
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-        val res = holder.itemView.context.resources
-        holder.workoutId.text = item.exerciseId.toString()
-       // holder.workoutId.text  TODO TRansform the ID into exercise name
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater =LayoutInflater.from(parent.context)
@@ -33,10 +28,21 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
         return ViewHolder(view)
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = data[position]
+        holder.bind(item)
+    }
+
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val workoutId : TextView = itemView.findViewById(R.id.exercise_name_text)
         //TODO add all of the other data that is needed for the viewholder
+
+        fun bind(item: Workout){
+            val res = itemView.context.resources
+            workoutId.text = item.exerciseId.toString()
+            // holder.workoutId.text  TODO TRansform the ID into exercise name
+        }
     }
 
 }
