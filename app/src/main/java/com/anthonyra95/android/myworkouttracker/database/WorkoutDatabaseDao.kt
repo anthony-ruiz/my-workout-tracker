@@ -25,7 +25,7 @@ interface WorkoutDatabaseDao {
     fun getAllEnries(): LiveData<List<Workout>>
 
     @Query("SELECT * FROM working_sets_table ORDER BY entryId DESC LIMIT 1")
-    fun getLatestEntry(): Workout
+    fun getLatestEntry(): Workout?
 
     @Query("SELECT * FROM working_sets_table WHERE  start_time_milli = (SELECT MAX(start_time_milli) FROM working_sets_table)")
     fun getCurrentWorkout() : LiveData<List<Workout>>

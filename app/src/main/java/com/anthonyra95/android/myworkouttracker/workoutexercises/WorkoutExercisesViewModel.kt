@@ -28,7 +28,7 @@ class WorkoutExercisesViewModel(private val workingSetKey: Long = 0L, val databa
     fun onSetExerciseid(exerciseId: Long){
         uiScope.launch {
             withContext(Dispatchers.IO){
-                val currentSet = database.getWorkingSet(workingSetKey) ?: return@withContext
+                val currentSet = database.getWorkingSet(workingSetKey)
                 currentSet.exerciseId = exerciseId
                 database.updateEntry(currentSet)
             }

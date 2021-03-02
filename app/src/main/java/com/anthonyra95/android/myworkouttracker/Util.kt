@@ -89,6 +89,7 @@ fun formatWorkouts(nights: List<Workout>, resources: Resources): Spanned {
                 append("\t${convertLongToDateString(it.endTimeMilli)}<br>")
 //                append(resources.getString(R.string.quality))
                 //append("\t${convertNumericQualityToString(it.sleepQuality, resources)}<br>")
+
                 append(resources.getString(R.string.time_spent))
                 // Hours
                 append("\t ${it.endTimeMilli.minus(it.startTimeMilli) / 1000 / 60 / 60}:")
@@ -97,6 +98,7 @@ fun formatWorkouts(nights: List<Workout>, resources: Resources): Spanned {
                 // Seconds
                 append("${it.endTimeMilli.minus(it.startTimeMilli) / 1000}<br><br>")
             }
+            append("<br>exercise id ${it.exerciseId} <br>")
         }
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

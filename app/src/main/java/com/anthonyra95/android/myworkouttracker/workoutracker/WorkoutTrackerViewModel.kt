@@ -2,10 +2,7 @@ package com.anthonyra95.android.myworkouttracker.workoutracker
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.*
 import com.anthonyra95.android.myworkouttracker.database.Workout
 import com.anthonyra95.android.myworkouttracker.database.WorkoutDatabaseDao
 import com.anthonyra95.android.myworkouttracker.database.formatWorkouts
@@ -25,10 +22,10 @@ class WorkoutTrackerViewModel(
 
     //Scope our thread is going to run in
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private var workoutStartingTime : Long = 0L
 
-    //current workout
-    private lateinit var todaysWorkout : LiveData<List<Workout>>
+
+    //current workingSet
+    private  var thisWorkingSet = MutableLiveData<Workout?>()
 
     //all of the working sets on our database
     private val allworkouts = database.getAllEnries()
@@ -39,25 +36,26 @@ class WorkoutTrackerViewModel(
 
 
     init {
-        initializeTodaysWorkout()
+        initializeCurrentWorkingset()
     }
 
     //uses a corutine to get our workout from database so that it doesnt block ui
-    private fun initializeTodaysWorkout() {
+    private fun initializeCurrentWorkingset() {
         uiScope.launch {
 
-            todaysWorkout = getTodaysWorkoutFromDatabase()
+            //gets the latest working set
+            thisWorkingSet.value = getCurrentWorkingSetFromDatabase()
         }
     }
 
-    //suspend is bc it is called from the corutine
-    private suspend fun getTodaysWorkoutFromDatabase(): LiveData<List<Workout>> {
-        return withContext(Dispatchers.IO){
-            var currentWorkout = database.getCurrentWorkout()
-//            if(database.getLatestEntry().endTimeMilli != database.getLatestEntry().startTimeMilli){
-//                currentWorkout = null
-//            }
-            currentWorkout
+    //checks if our set has been ended or not
+    private suspend fun getCurrentWorkingSetFromDatabase(): Workout? {
+        return withContext(Dispatchers.IO) {
+            var currentSet = database.getLatestEntry()
+            if (currentSet?.endTimeMilli != currentSet?.startTimeMilli) {
+                currentSet = null
+            }
+             currentSet
         }
     }
 
@@ -71,62 +69,64 @@ class WorkoutTrackerViewModel(
         _navigateToExercise.value = null
     }
 
+
     fun onStartWorkout(){
         uiScope.launch {
-            Log.i("thisisit", "clicked registered")
+            //create our new workingset
             var newWorkout = Workout()
-            if(workoutStartingTime != 0L){
-                newWorkout.startTimeMilli = workoutStartingTime
-                newWorkout.endTimeMilli = workoutStartingTime
 
+            //if our previous current set has same start and end time set start end time to same as previous one
+            //so that we can distinguish from our workout by starting time
+            if(thisWorkingSet.value?.endTimeMilli == thisWorkingSet.value?.startTimeMilli){
+                newWorkout.endTimeMilli= thisWorkingSet.value?.endTimeMilli!!
+                newWorkout.startTimeMilli= thisWorkingSet.value?.endTimeMilli!!
             }
+            // save our new database
             insert(newWorkout)
-
-            todaysWorkout = getTodaysWorkoutFromDatabase()
-
-            _navigateToExercise.value = newWorkout
+            //update or latest workingSet
+            thisWorkingSet.value = getCurrentWorkingSetFromDatabase()
+            //navigate to the exercise selector screen
+            _navigateToExercise.value = thisWorkingSet.value
         }
     }
     private suspend fun insert(workout: Workout){
         withContext(Dispatchers.IO){
             database.insertWorkout(workout)
-            Log.i("thiisit", "you saved item with endtime ${workout.endTimeMilli} and start time: ${workout.startTimeMilli}")
+            Log.i("HERE", "you saved item with endtime ${workout.endTimeMilli} and start time: ${workout.startTimeMilli}")
         }
     }
 
     fun onStopWorkout(){
         uiScope.launch {
-            var myList : List<Workout>? = null
-               Transformations.map(todaysWorkout){
-                   if(it.isEmpty()) return@map
-                   myList = it
-                   it.forEach {
-                       it.endTimeMilli = System.currentTimeMillis()
-                   }
+            //gets the latest working set
+            val lastWorkingSetFromWorkout = thisWorkingSet.value ?: return@launch
 
-               }
-            update(myList)
+            if(lastWorkingSetFromWorkout.endTimeMilli != lastWorkingSetFromWorkout.startTimeMilli){
+                lastWorkingSetFromWorkout.endTimeMilli = System.currentTimeMillis()
+            }
+            update(lastWorkingSetFromWorkout)
+            thisWorkingSet.value = getCurrentWorkingSetFromDatabase()
+            //TODO add functionality so that we go to a wokout summary fragment
+
         }
     }
 
-    private suspend fun update(workout: List<Workout>?){
-        val currentWorkout = workout ?: return
-        currentWorkout.forEach {
-            database.updateEntry(it)
-        }
+    private suspend fun update(workout: Workout){
+        database.updateEntry(workout)
     }
 
     fun onClear(){
         uiScope.launch {
             clear()
-            todaysWorkout = getTodaysWorkoutFromDatabase()
+            thisWorkingSet.value = getCurrentWorkingSetFromDatabase()
         }
     }
 
     suspend fun clear(){
-        withContext(Dispatchers.IO){
-            database.clear()
+        viewModelScope.launch {
+            clear()
         }
+
     }
 
 
