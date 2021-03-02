@@ -1,16 +1,13 @@
 package com.anthonyra95.android.myworkouttracker.workoutracker
 
-import android.content.res.Resources
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.anthonyra95.android.myworkouttracker.R
 import com.anthonyra95.android.myworkouttracker.database.Workout
+import com.anthonyra95.android.myworkouttracker.databinding.ListItemWorkingSetsBinding
 
 class WorkoutAdapter : ListAdapter<Workout, WorkoutAdapter.ViewHolder>(WorkoutDiffCallback()) {
 
@@ -26,21 +23,21 @@ class WorkoutAdapter : ListAdapter<Workout, WorkoutAdapter.ViewHolder>(WorkoutDi
     }
 
 
-    class ViewHolder private constructor(itemView: View): RecyclerView.ViewHolder(itemView){
-        val workoutId : TextView = itemView.findViewById(R.id.exercise_name_text)
+    class ViewHolder private constructor(val binding: ListItemWorkingSetsBinding): RecyclerView.ViewHolder(binding.root){
         //TODO add all of the other data that is needed for the viewholder
 
         fun bind(item: Workout){
             val res = itemView.context.resources
-            workoutId.text = item.exerciseId.toString()
+            binding.exerciseNameText.text = item.exerciseId.toString()
             // holder.workoutId.text  TODO TRansform the ID into exercise name
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.list_item_working_sets, parent, false)
-                return ViewHolder(view)
+                val binding = ListItemWorkingSetsBinding.inflate(layoutInflater,parent,false)
+
+                return ViewHolder(binding)
             }
         }
     }
