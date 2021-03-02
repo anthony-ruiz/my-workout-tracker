@@ -101,9 +101,9 @@ class WorkoutTrackerViewModel(
             //gets the latest working set
             val lastWorkingSetFromWorkout = thisWorkingSet.value ?: return@launch
 
-            if(lastWorkingSetFromWorkout.endTimeMilli != lastWorkingSetFromWorkout.startTimeMilli){
+//            if(lastWorkingSetFromWorkout.endTimeMilli != lastWorkingSetFromWorkout.startTimeMilli){
                 lastWorkingSetFromWorkout.endTimeMilli = System.currentTimeMillis()
-            }
+//            }
             update(lastWorkingSetFromWorkout)
             thisWorkingSet.value = getCurrentWorkingSetFromDatabase()
             //TODO add functionality so that we go to a wokout summary fragment
