@@ -23,9 +23,7 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater =LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.list_item_working_sets, parent, false)
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -34,7 +32,7 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
     }
 
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder private constructor(itemView: View): RecyclerView.ViewHolder(itemView){
         val workoutId : TextView = itemView.findViewById(R.id.exercise_name_text)
         //TODO add all of the other data that is needed for the viewholder
 
@@ -43,6 +41,16 @@ class WorkoutAdapter : RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
             workoutId.text = item.exerciseId.toString()
             // holder.workoutId.text  TODO TRansform the ID into exercise name
         }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.list_item_working_sets, parent, false)
+                return ViewHolder(view)
+            }
+        }
     }
+
+
 
 }
