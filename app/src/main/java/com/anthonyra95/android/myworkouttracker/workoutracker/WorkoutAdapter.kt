@@ -27,9 +27,8 @@ class WorkoutAdapter : ListAdapter<Workout, WorkoutAdapter.ViewHolder>(WorkoutDi
         //TODO add all of the other data that is needed for the viewholder
 
         fun bind(item: Workout){
-            val res = itemView.context.resources
-            binding.exerciseNameText.text = item.exerciseId.toString()
-            // holder.workoutId.text  TODO TRansform the ID into exercise name
+           binding.workingset = item
+            binding.executePendingBindings()
         }
 
         companion object {

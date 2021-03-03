@@ -9,7 +9,7 @@ import com.anthonyra95.android.myworkouttracker.database.Workout
 
 
 
-@BindingAdapter("reps_text")
+@BindingAdapter("reps_field")
 fun TextView.setReps(item: Workout?) {
     item?.let {
         text = item.reps.toString()

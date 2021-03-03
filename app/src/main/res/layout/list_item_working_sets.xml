@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="set"
+            name="workingset"
             type="com.anthonyra95.android.myworkouttracker.database.Workout" />
 
     </data>
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/exercise_inage"
+            android:id="@+id/exercise_image"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="16dp"
@@ -23,7 +23,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/bench_press"
-            tools:srcCompat="@drawable/bench_press" />
+            tools:srcCompat="@drawable/bench_press"
+            app:exercise_image= "@{workingset}"/>
 
 
         <TextView
@@ -35,11 +36,12 @@
             android:fontFamily="@font/roboto"
             android:text="TextView"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/exercise_inage"
+            app:layout_constraintBottom_toTopOf="@+id/exercise_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            tools:text="BenchPress" />
+            tools:text="BenchPress"
+            app:exercise_name_text= "@{workingset}"/>
 
         <TableLayout
             android:layout_width="0dp"
@@ -47,7 +49,7 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/exercise_inage"
+            app:layout_constraintStart_toEndOf="@+id/exercise_image"
             app:layout_constraintTop_toTopOf="@+id/exercise_name_text"
             app:layout_constraintVertical_bias="1.0">
 
@@ -71,7 +73,8 @@
                     android:gravity="center"
                     android:text="Weigth (lbs)"
                     tools:layout_editor_absoluteX="107dp"
-                    tools:layout_editor_absoluteY="629dp" />
+                    tools:layout_editor_absoluteY="629dp"
+                    />
             </TableRow>
 
             <TableRow
@@ -85,7 +88,8 @@
                     android:gravity="center"
                     android:text=" 50 "
                     tools:layout_editor_absoluteX="107dp"
-                    tools:layout_editor_absoluteY="629dp" />
+                    tools:layout_editor_absoluteY="629dp"
+                    app:reps_field="@{workingset }"/>
 
                 <TextView
                     android:id="@+id/weigth_field"
@@ -94,7 +98,8 @@
                     android:gravity="center"
                     android:text=" 250 "
                     tools:layout_editor_absoluteX="107dp"
-                    tools:layout_editor_absoluteY="629dp" />
+                    tools:layout_editor_absoluteY="629dp"
+                    app:weigth_field="@{workingset}"/>
 
             </TableRow>
 

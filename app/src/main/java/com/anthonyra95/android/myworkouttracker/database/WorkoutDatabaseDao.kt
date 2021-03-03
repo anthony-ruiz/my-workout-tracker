@@ -30,5 +30,11 @@ interface WorkoutDatabaseDao {
     @Query("SELECT * FROM working_sets_table WHERE  start_time_milli = (SELECT MAX(start_time_milli) FROM working_sets_table)")
     fun getCurrentWorkout() : LiveData<List<Workout>>
 
+//
+    @Insert
+    fun insertWorkout(exercise: Exercise)
+
+    @Query("SELECT * FROM exercise_table ORDER BY exerciseId ASC")
+    fun getAllExercises(): LiveData<List<Exercise>>
 
 }
