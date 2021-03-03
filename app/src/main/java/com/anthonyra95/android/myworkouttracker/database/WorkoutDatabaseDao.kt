@@ -32,7 +32,7 @@ interface WorkoutDatabaseDao {
 
 //
     @Insert
-    fun insertWorkout(exercise: Exercise)
+    fun insertExercise(exercise: Exercise)
 
     @Query("SELECT * FROM exercise_table ORDER BY exerciseId ASC")
     fun getAllExercises(): LiveData<List<Exercise>>
