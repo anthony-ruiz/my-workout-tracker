@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/exercise_image"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginBottom="@dimen/margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bench_press" />
+    <data>
+        <variable
+            name="exercise"
+            type="com.anthonyra95.android.myworkouttracker.database.Exercise" />
+        <variable
+            name="clickListener"
+            type="com.anthonyra95.android.myworkouttracker.workoutexercises.ExerciseListener" />
+    </data>
 
-    <TextView
-        android:id="@+id/exercise_name"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/roboto"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/exercise_image"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="BenchPress" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:onClick="@{() -> clickListener.onClick(exercise)}">
+
+        <ImageView
+            android:id="@+id/exercises_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bench_press"
+            app:exercises_image="@{exercise}"/>
+
+        <TextView
+            android:id="@+id/exercise_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/exercises_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="BenchPress"
+            app:exercise_name ="@{exercise}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
