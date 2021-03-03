@@ -31,8 +31,18 @@ class WorkoutExercisesFragment : Fragment() {
         val dataSource = WorkoutDatabase.getInstance(application).workoutDatabaseDao
         val viewModelFactory = WorkoutExercisesVeiwModelFactory(arguments.exerciseKey,dataSource)
 
+        //provide the adapter the data
         val workoutExercisesViewModel = ViewModelProvider(this,viewModelFactory).get(WorkoutExercisesViewModel::class.java)
         binding.workoutExercisesViewModel = workoutExercisesViewModel
+
+
+        val adapter = ExerciseAdapter()
+        binding.exercisesRecycleView.adapter = adapter
+
+        workoutExercisesViewModel.allExercises.observe(viewLifecycleOwner, Observer {
+            adapter.data = it
+
+        })
 
 
         workoutExercisesViewModel.navigateToWorkoutTracker.observe(viewLifecycleOwner, Observer {

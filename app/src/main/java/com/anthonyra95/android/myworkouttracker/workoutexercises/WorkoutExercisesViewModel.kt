@@ -18,7 +18,7 @@ class WorkoutExercisesViewModel(private val workingSetKey: Long = 0L, val databa
     private val _navigateToWorkoutTracker = MutableLiveData<Boolean?>()
 
     //get all exercises
-    private val allExercises = database.getAllExercises()
+     val allExercises = database.getAllExercises()
     override fun onCleared() {
         super.onCleared()
         job.cancel()
