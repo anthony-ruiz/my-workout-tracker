@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="workingset"
+            type="com.anthonyra95.android.myworkouttracker.database.Workout" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/exercise_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/bench_press"
+            tools:srcCompat="@drawable/bench_press"
+            app:exercise_image= "@{workingset}"/>
+
+
+        <TextView
+            android:id="@+id/exercise_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="TextView"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/exercise_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="BenchPress"
+            app:exercise_name_text= "@{workingset}"/>
+
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/exercise_image"
+            app:layout_constraintTop_toTopOf="@+id/exercise_name_text"
+            app:layout_constraintVertical_bias="1.0">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reps_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="REPS"
+                    tools:layout_editor_absoluteX="362dp"
+                    tools:layout_editor_absoluteY="629dp" />
+
+                <TextView
+                    android:id="@+id/weigth_label_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Weigth (lbs)"
+                    tools:layout_editor_absoluteX="107dp"
+                    tools:layout_editor_absoluteY="629dp"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/reps_field"
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text=" 50 "
+                    android:inputType="number"
+                    tools:layout_editor_absoluteX="107dp"
+                    tools:layout_editor_absoluteY="629dp"
+                    app:reps_field="@{workingset}"/>
+
+
+                <EditText
+                    android:id="@+id/weigth_field"
+                    android:layout_width="144dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text=" 250 "
+                    android:inputType="number"
+                    tools:layout_editor_absoluteX="107dp"
+                    tools:layout_editor_absoluteY="629dp"
+                    app:weigth_field="@{workingset}"/>
+
+
+            </TableRow>
+
+
+        </TableLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
