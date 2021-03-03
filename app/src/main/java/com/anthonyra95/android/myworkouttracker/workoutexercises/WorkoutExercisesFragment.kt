@@ -38,7 +38,7 @@ class WorkoutExercisesFragment : Fragment() {
 
 
         val adapter = ExerciseAdapter(ExerciseListener {
-            exerciseID -> Toast.makeText(context, "${exerciseID}", Toast.LENGTH_SHORT).show()
+            exerciseID -> workoutExercisesViewModel.onSetExerciseid(exerciseID)
         })
         binding.exercisesRecycleView.adapter = adapter
 
