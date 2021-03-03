@@ -43,7 +43,7 @@ class WorkoutExercisesViewModel(private val workingSetKey: Long = 0L, val databa
                 for (i in 0..10){
                     myExercise.exerciseId = i
                     when(i) {
-                        0 ->  myExercise.exerciseName = "BENCH PRESS "
+                        0 -> myExercise.exerciseName = "BENCH PRESS "
                         1 -> myExercise.exerciseName = "BARBELL SQUAT"
                         2 -> myExercise.exerciseName = "CURLS"
                         3 -> myExercise.exerciseName = "CABLE FLIES"

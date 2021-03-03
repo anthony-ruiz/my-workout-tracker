@@ -1,15 +1,16 @@
 package com.anthonyra95.android.myworkouttracker.workoutexercises
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.anthonyra95.android.myworkouttracker.R
 import com.anthonyra95.android.myworkouttracker.database.Exercise
-import com.anthonyra95.android.myworkouttracker.database.TextItemViewHolder
+import com.anthonyra95.android.myworkouttracker.database.converExerciseIdToString
 
 
-class ExerciseAdapter  : RecyclerView.Adapter<TextItemViewHolder>() {
+class ExerciseAdapter  : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
 
     var data = listOf<Exercise>()
     set(value) {
@@ -19,18 +20,34 @@ class ExerciseAdapter  : RecyclerView.Adapter<TextItemViewHolder>() {
 
     override fun getItemCount() = data.size
 
-    override fun onBindViewHolder(holder: TextItemViewHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        holder.textView.text = item.exerciseId.toString()
+        holder.bind(item)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {
 
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater
-            .inflate(R.layout.basic_text_view, parent, false) as TextView
+    class ViewHolder private constructor (itemView: View) : RecyclerView.ViewHolder(itemView){
+        val exercise: TextView= itemView.findViewById(R.id.exercise_name)
 
-        return TextItemViewHolder(view)
+        fun bind(item: Exercise) {
+            var res = itemView.context.resources
+            exercise.text = converExerciseIdToString(item.exerciseId)
+            //todo set the image
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.list_items_exercises, parent, false)
+
+                return ViewHolder(view)
+            }
+        }
     }
-    
+
+
 }

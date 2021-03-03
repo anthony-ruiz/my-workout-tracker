@@ -112,3 +112,20 @@ fun formatWorkouts(nights: List<Workout>, resources: Resources): Spanned {
 
 // this is a simple view holder for the RecyclerView
 class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)
+
+fun converExerciseIdToString(exerciseId: Int): String{
+   return when(exerciseId) {
+        0 -> "BENCH PRESS "
+        1 ->  "BARBELL SQUAT"
+        2 ->  "CURLS"
+        3 -> "CABLE FLIES"
+        4 ->  "CHIN UPS"
+        5 ->  "LATERAL RAISES"
+        6 ->  "PUSH UPS"
+        7 -> "ROW"
+        8 ->  "SHOULDER PRESS"
+        9 ->  "SQUAT"
+        9 ->  "DIPS"
+        else -> ""
+    }
+}
