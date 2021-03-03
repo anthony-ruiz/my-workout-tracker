@@ -32,30 +32,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <ScrollView
-            android:id="@+id/exercise_scroll_view"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exercises_recycle_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_exercise_text">
+            app:layout_constraintTop_toBottomOf="@+id/add_exercise_text"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
-            <!-- In the TextView, we can access the nightsString LiveData,
-                 which keeps it displayed and updated in the TextView
-                 whenever it changes. -->
 
-            <TextView
-                android:id="@+id/exercises_textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:layout_marginEnd="@dimen/margin"
-                android:text="EXERCISES " />
-        </ScrollView>
+        </androidx.recyclerview.widget.RecyclerView>
+
 
         <Button
             android:id="@+id/confirm_exercise_button"
@@ -63,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin"
             android:text="@string/add"
-            app:layout_constraintBottom_toTopOf="@+id/exercise_scroll_view"
+            app:layout_constraintBottom_toTopOf="@+id/exercises_recycle_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/add_exercise_text"
