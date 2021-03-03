@@ -81,30 +81,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
+                <EditText
                     android:id="@+id/reps_field"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text=" 50 "
+                    android:inputType="number"
                     tools:layout_editor_absoluteX="107dp"
                     tools:layout_editor_absoluteY="629dp"
-                    app:reps_field="@{workingset }"/>
+                    app:reps_field="@{workingset}"/>
 
-                <TextView
+
+                <EditText
                     android:id="@+id/weigth_field"
                     android:layout_width="144dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text=" 250 "
+                    android:inputType="number"
                     tools:layout_editor_absoluteX="107dp"
                     tools:layout_editor_absoluteY="629dp"
                     app:weigth_field="@{workingset}"/>
+
 
             </TableRow>
 
 
         </TableLayout>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
