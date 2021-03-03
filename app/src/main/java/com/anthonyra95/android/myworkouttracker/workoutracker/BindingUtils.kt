@@ -22,7 +22,7 @@ fun TextView.setWeigth(item: Workout?) {
         text = item.reps.toString()
     }
 }
-
+//this
 @BindingAdapter("exercise_name_text")
 fun TextView.setExerciseName(item: Workout?) {
     item?.let {
