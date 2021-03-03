@@ -15,4 +15,16 @@
     <string name="start_time"><![CDATA[<b>Start:</b>]]></string>
     <string name="end_time"><![CDATA[<b>End:</b>]]></string>
     <string name="time_spent"><![CDATA[<b>Hours:Minutes:Seconds</b>]]></string>
+    <string name="bench_press">BENCH PRESS</string>
+    <string name="barbell_squat">BARBEL SQUAT</string>
+    <string name="curls">CURLS</string>
+    <string name="cable_flies">CABLE FLIES</string>
+    <string name="chin_ups">CHIN UPS</string>
+    <string name="lateral_raises">LATERAL RAISES</string>
+    <string name="push_ups">PUSH UPS</string>
+    <string name="row">ROW</string>
+    <string name="sohulder_press">SHOULDER PRESSS</string>
+    <string name="squat">SQUAT</string>
+    <string name="dips">DIPS</string>
+    <string name="no_exercise">NO EXERCISE</string>
 </resources>

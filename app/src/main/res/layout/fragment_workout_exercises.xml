@@ -68,7 +68,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/add_exercise_text"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{() -> workoutExercisesViewModel.onSetExerciseid(2L) }"/>
+            android:onClick="@{() -> workoutExercisesViewModel.onSetExerciseid(2) }"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

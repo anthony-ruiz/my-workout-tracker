@@ -56,7 +56,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/reps_text"
+                    android:id="@+id/reps_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -65,7 +65,7 @@
                     tools:layout_editor_absoluteY="629dp" />
 
                 <TextView
-                    android:id="@+id/weigth_text"
+                    android:id="@+id/weigth_label_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -78,23 +78,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <EditText
+                <TextView
                     android:id="@+id/reps_field"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
+                    android:gravity="center"
+                    android:text=" 50 "
                     tools:layout_editor_absoluteX="107dp"
-                    tools:layout_editor_absoluteY="680dp" />
+                    tools:layout_editor_absoluteY="629dp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/weigth_field"
                     android:layout_width="144dp"
                     android:layout_height="match_parent"
-                    android:ems="10"
-                    android:inputType="number"
-                    tools:layout_editor_absoluteX="251dp"
-                    tools:layout_editor_absoluteY="684dp" />
+                    android:gravity="center"
+                    android:text=" 250 "
+                    tools:layout_editor_absoluteX="107dp"
+                    tools:layout_editor_absoluteY="629dp" />
 
             </TableRow>
 
