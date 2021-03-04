@@ -5,15 +5,18 @@ This is an Android application written in Kotlin. it allows a user to create a w
 
 
 When a user is going to start a workout they are presented with the following screen:
+
 ![picture alt](https://i.imgur.com/2cIknoq.png)
 
 
 
 After they choose to add a new exercise they are presented with a list of possible exercises to track.
+
 ![picture alt](https://i.imgur.com/66dGReS.png)
 
 
-After an exercise is selected it is passed to their current workout where they can see all of the exercises that they have done for this workout and they can update the reps and weight used for each of the exercises. 
+After an exercise is selected it is passed to their current workout where they can see all of the exercises that they have done for this workout and they can update the reps and weight used for each of the exercises. \
+
 ![picture alt](https://i.imgur.com/LWJt1zW.png)
 
 
