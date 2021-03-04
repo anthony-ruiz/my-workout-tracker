@@ -125,7 +125,7 @@ fun converExerciseIdToString(exerciseId: Int): String{
         7 -> "ROW"
         8 ->  "SHOULDER PRESS"
         9 ->  "SQUAT"
-        9 ->  "DIPS"
+        10 ->  "DIPS"
         else -> ""
     }
 }

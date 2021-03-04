@@ -37,7 +37,7 @@ fun TextView.setExerciseName(item: Workout?) {
             7 -> text = context.getString(R.string.row)
             8 -> text = context.getString(R.string.sohulder_press)
             9 ->text = context.getString(R.string.squat)
-            9 -> text = context.getString(R.string.dips)
+            10 -> text = context.getString(R.string.dips)
             else -> text = context.getString(R.string.no_exercise)
         }
 
@@ -59,7 +59,7 @@ fun ImageView.setExersiceNameString(item: Workout?){
             7 -> R.drawable.row
             8 -> R.drawable.sohulder_press
             9 -> R.drawable.squats
-            9 -> R.drawable.tricep_dips
+            10 -> R.drawable.tricep_dips
             else -> R.drawable.empty
         })
     }

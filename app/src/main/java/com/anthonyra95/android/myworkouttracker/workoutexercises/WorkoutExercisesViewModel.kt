@@ -53,7 +53,7 @@ class WorkoutExercisesViewModel(private val workingSetKey: Long = 0L, val databa
                         7 -> myExercise.exerciseName = "ROW"
                         8 -> myExercise.exerciseName = "SHOULDER PRESS"
                         9 -> myExercise.exerciseName = "SQUAT"
-                        9 -> myExercise.exerciseName = "DIPS"
+                        10 -> myExercise.exerciseName = "DIPS"
                         else -> break
                     }
                     insert(myExercise)

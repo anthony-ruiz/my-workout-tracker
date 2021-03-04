@@ -29,7 +29,7 @@ fun ImageView.setExersiceImage(item: Exercise?){
             7 -> R.drawable.row
             8 -> R.drawable.sohulder_press
             9 -> R.drawable.squats
-            9 -> R.drawable.tricep_dips
+            10 -> R.drawable.tricep_dips
             else -> R.drawable.empty
         })
     }
