@@ -23,6 +23,7 @@ class WorkoutAdapter : ListAdapter<Workout, WorkoutAdapter.ViewHolder>(WorkoutDi
     }
 
 
+
     class ViewHolder private constructor(val binding: ListItemWorkingSetsBinding): RecyclerView.ViewHolder(binding.root){
         //TODO add all of the other data that is needed for the viewholder
 

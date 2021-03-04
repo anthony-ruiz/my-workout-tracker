@@ -7,6 +7,7 @@ import com.anthonyra95.android.myworkouttracker.database.Workout
 import com.anthonyra95.android.myworkouttracker.database.WorkoutDatabaseDao
 import com.anthonyra95.android.myworkouttracker.database.formatWorkouts
 import kotlinx.coroutines.*
+import kotlin.random.Random
 
 
 //we are going to use corrutines
@@ -74,6 +75,9 @@ class WorkoutTrackerViewModel(
         uiScope.launch {
             //create our new workingset
             var newWorkout = Workout()
+            //TODO REMOVE DUMMY DATA
+            newWorkout.reps = Random.nextInt(0,15)
+            newWorkout.weigth = Random.nextInt(25,100)
 
             //if our previous current set has same start and end time set start end time to same as previous one
             //so that we can distinguish from our workout by starting time

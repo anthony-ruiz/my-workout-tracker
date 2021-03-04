@@ -4,22 +4,35 @@ package com.anthonyra95.android.myworkouttracker.workoutracker
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import com.anthonyra95.android.myworkouttracker.R
 import com.anthonyra95.android.myworkouttracker.database.Workout
 
 
 
 @BindingAdapter("reps_field")
-fun TextView.setReps(item: Workout?) {
+fun setReps( view : TextView,item: Workout?) {
     item?.let {
-        text = item.reps.toString()
+        view.text = item.reps.toString()
     }
 }
+
+@InverseBindingAdapter(attribute = "reps_field")
+fun getReps( view : TextView) : String {
+    return view.text.toString()
+}
+
+@BindingAdapter(" app:reps_field")
+fun setListeners(view: TextView, attrChange: InverseBindingListener) {
+    // Set a listener for click, focus, touch, etc.
+}
+
 
 @BindingAdapter("weigth_field")
 fun TextView.setWeigth(item: Workout?) {
     item?.let {
-        text = item.reps.toString()
+        text = item.weigth.toString()
     }
 }
 //this
