@@ -20,7 +20,7 @@ After an exercise is selected it is passed to their current workout where they c
 ![picture alt](https://i.imgur.com/LWJt1zW.png)
 
 
-##Tools Used:
+## Tools Used:
 
 
 * Kotlin
